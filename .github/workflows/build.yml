@@ -43,15 +43,15 @@ jobs:
               git checkout -b $t $t
               git branch
 
-              ls -al .
+              ls -al
 
               brew install gpgme
 
-              CGO_ENABLE=0 GO111MODULE=on GOOS=darwin GOARCH=arm64 go build -mod=vendor -ldflags -gcflags '' -tags 'exclude_graphdriver_devicemapper exclude_graphdriver_btrfs containers_image_openpgp' -o ./bin/skopeo-macos-arm64 ./cmd/skopeo
+              CGO_ENABLE=0 GO111MODULE=on GOOS=darwin GOARCH=arm64 go build -mod=vendor -gcflags '' -tags 'exclude_graphdriver_devicemapper exclude_graphdriver_btrfs containers_image_openpgp' -o ./bin/skopeo-macos-arm64 ./cmd/skopeo
               md5sum ./bin/skopeo-macos-arm64 > ./bin/skopeo-macos-arm64.md5
               sha256sum ./bin/skopeo-macos-arm64 > ./bin/skopeo-macos-arm64.sha256
 
-              CGO_ENABLE=0 GO111MODULE=on GOOS=darwin GOARCH=amd64 go build -mod=vendor -ldflags -gcflags '' -tags 'exclude_graphdriver_devicemapper exclude_graphdriver_btrfs containers_image_openpgp' -o ./bin/skopeo-macos-amd64 ./cmd/skopeo
+              CGO_ENABLE=0 GO111MODULE=on GOOS=darwin GOARCH=amd64 go build -mod=vendor -gcflags '' -tags 'exclude_graphdriver_devicemapper exclude_graphdriver_btrfs containers_image_openpgp' -o ./bin/skopeo-macos-amd64 ./cmd/skopeo
               md5sum ./bin/skopeo-macos-amd64 > ./bin/skopeo-macos-amd64.md5
               sha256sum ./bin/skopeo-macos-amd64 > ./bin/skopeo-macos-amd64.sha256
 
