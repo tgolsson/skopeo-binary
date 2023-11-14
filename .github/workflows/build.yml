@@ -31,7 +31,7 @@ jobs:
           new_tags="$(printf "%s" "$tags"| sed -n '{/\.0$/{g;p}};h' | tail -4) $(printf "%s" "$tags" | tail -1)"
           echo "::debug::[Tags] $new_tags"
 
-          t="1.13.3"
+          t="v1.13.3"
           # for t in $new_tags; do
           #   echo "[check] $t"
           #   b=$(echo "${APP_VERSION}" | grep -w ${t} | wc -l)
