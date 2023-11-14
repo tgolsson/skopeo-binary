@@ -37,7 +37,7 @@ jobs:
             b=0
             if [[ $b == 0 ]]; then
               echo "::group::[Build] $t"
-              git clone -q --depth=1 --branch $t --progress $APP_REPO
+              git clone --mirror -q --depth=1 --branch $t --progress $APP_REPO
               ls -al .
               pushd ${APP}
               git checkout -b $t $t
@@ -82,7 +82,7 @@ jobs:
         if: ${{ steps.build_skopeo.outputs.ADD_TAG != '' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: ts/tmp
       - name: Release
         uses: softprops/action-gh-release@v1
         if: ${{ steps.build_skopeo.outputs.ADD_TAG != '' }}
