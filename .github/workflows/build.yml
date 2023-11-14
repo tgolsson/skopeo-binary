@@ -45,7 +45,7 @@ jobs:
 
               ls -al
 
-              brew install gpgme md5sum
+              brew install gpgme coreutils
 
               CGO_ENABLE=0 GO111MODULE=on GOOS=darwin GOARCH=arm64 go build -mod=vendor -gcflags '' -tags 'exclude_graphdriver_devicemapper exclude_graphdriver_btrfs containers_image_openpgp' -o ./bin/skopeo-macos-arm64 ./cmd/skopeo
               md5sum ./bin/skopeo-macos-arm64 > ./bin/skopeo-macos-arm64.md5
