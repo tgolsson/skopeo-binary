@@ -31,11 +31,12 @@ jobs:
           new_tags="$(printf "%s" "$tags"| sed -n '{/\.0$/{g;p}};h' | tail -4) $(printf "%s" "$tags" | tail -1)"
           echo "::debug::[Tags] $new_tags"
 
-          for t in $new_tags; do
-            echo "[check] $t"
-            b=$(echo "${APP_VERSION}" | grep -w ${t} | wc -l)
-            b=0
-            if [[ $b == 0 ]]; then
+          t="1.13.3"
+          # for t in $new_tags; do
+          #   echo "[check] $t"
+          #   b=$(echo "${APP_VERSION}" | grep -w ${t} | wc -l)
+          #   b=0
+          #   if [[ $b == 0 ]]; then
               echo "::group::[Build] $t"
               git clone -q --depth=1 --branch $t --progress $APP_REPO
               pushd ${APP}
@@ -68,11 +69,11 @@ jobs:
               cat ./skopeo/bin/skopeo-{darwin,linux}-{amd64,arm64}.{md5,sha256} > CHECKSUMS.txt
               echo "::endgroup::"
               popd
-              break
-            else
-              echo "::debug::[skip] $t"
-            fi
-          done
+          #     break
+          #   else
+          #     echo "::debug::[skip] $t"
+          #   fi
+          # done
       - name: Push changes
         uses: ad-m/github-push-action@master
         if: ${{ steps.build_skopeo.outputs.ADD_TAG != '' }}
