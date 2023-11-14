@@ -82,7 +82,7 @@ jobs:
         if: ${{ steps.build_skopeo.outputs.ADD_TAG != '' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ts/tmp
+          branch: HEAD:refs/heads/ts/tmp
       - name: Release
         uses: softprops/action-gh-release@v1
         if: ${{ steps.build_skopeo.outputs.ADD_TAG != '' }}
