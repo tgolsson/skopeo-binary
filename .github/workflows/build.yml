@@ -61,7 +61,7 @@ jobs:
               ADD_TAG=$t
 
               echo "::debug::[Push file]"
-              exit 0
+
               echo "${t}" >> version.txt
               git config --global user.email "me@sbg.dev"
               git config --global user.name "Tom Solberg"
