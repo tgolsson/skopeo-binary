@@ -37,7 +37,7 @@ jobs:
             b=0
             if [[ $b == 0 ]]; then
               echo "::group::[Build] $t"
-              git clone --mirror -q --depth=1 --branch $t --progress $APP_REPO
+              git clone -q --depth=1 --branch $t --progress $APP_REPO
               ls -al .
               pushd ${APP}
               git checkout -b $t $t
