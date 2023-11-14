@@ -38,12 +38,12 @@ jobs:
             if [[ $b == 0 ]]; then
               echo "::group::[Build] $t"
               git clone -q --depth=1 --branch $t --progress $APP_REPO
-              ls -al bin/
+              ls -al .
               pushd ${APP}
               git checkout -b $t $t
               git branch
 
-              ls -al bin/
+              ls -al .
 
               brew install gpgme
 
